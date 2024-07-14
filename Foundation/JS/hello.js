@@ -41,10 +41,14 @@ function playRound(humanchoice, compchoice) {
     }
 }
 
-const humanchoice = getHumanChoice();
-const compchoice = getComputerChoice();
+let rounds = parseInt(prompt("Enter number of rounds"));
 
-console.log("Your choice:",  humanchoice);
-console.log("Computer choice:", compchoice);
+for(let i=0; i<rounds; ++i) {
+    const humanchoice = getHumanChoice();
+    const compchoice = getComputerChoice();
 
-playRound(humanchoice, compchoice);
+    console.log("Your choice:",  humanchoice);
+    console.log("Computer choice:", compchoice);
+
+    playRound(humanchoice, compchoice);
+}
