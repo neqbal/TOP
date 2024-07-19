@@ -1,0 +1,29 @@
+html, body {
+    height :100vw;
+    margin: 0;
+}
+
+.main_container {
+    height :100vw;
+    background-color: rgb(248, 209, 162);
+}
+
+#user_popup_container {
+    height: 25px;
+    width: 100vw;
+    padding: 5px;
+    margin: 0px 0px 4px 0px;
+}
+
+#grid_container {
+    display : flex;
+    height: 95.5%;
+    background-color: rgb(248, 209, 162);
+    padding: 0px 5px 0px 5px;
+}
+
+#grid {
+    
+}
+
+
