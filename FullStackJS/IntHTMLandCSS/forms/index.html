@@ -8,8 +8,10 @@
         <div class="container">
             <div class="left">
                 <div class="image-container">
-                    <img src="https://avatars.githubusercontent.com/u/4441966?s=280&v=4">
-                    <div class="odin">Odin</div>
+                    <img class="image" src="https://cdn.statically.io/gh/TheOdinProject/curriculum/5f37d43908ef92499e95a9b90fc3cc291a95014c/html_css/project-sign-up-form/odin-lined.png">
+                    <div class="odin">
+                        <div>ODIN</div>
+                    </div>
                 </div>
             </div>
             <div class="right">
@@ -27,7 +29,40 @@
                 </div>
 
                 <div class="form">
-                    
+                    <form id="userInput" action="#">
+                        <legend>Lets do this!</legend>
+                        <div class="input-area">
+                            <div class="text-area">
+                                <label for="fname">First Name</label>
+                                <input class="fname">
+                            </div>
+                            <div class="text-area">
+                                <label for="lname">Last Name</label>
+                                <input class="lname">
+                            </div>
+                            <div class="text-area">
+                                <label for="email">Email</label>
+                                <input class="email">
+                            </div>
+                            <div class="text-area">
+                                <label for="pNumber">Phone number</label>
+                                <input class="pNumber">
+                            </div>
+                            <div class="text-area">
+                                <label for="password">Password</label>
+                                <input class="password">
+                            </div>
+                            <div class="text-area">
+                                <label for="cPass">Confirm Password</label>
+                                <input class="cPass">
+                            </div>
+                        </div>
+                    </form>
+                </div>
+                <button class="submit-btn" type="submit">Create Account</button>
+                <div class="login-area">
+                    Already have an account
+                    <a class="login-link" hreaf="#">Log in</a>
                 </div>
             </div>
         </div>

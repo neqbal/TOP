@@ -18,15 +18,24 @@ body, html {
 .odin {
     display: flex;
     justify-content: center;
+    font-size: 5rem;
+    align-items: center;
 }
 
 .image-container {
+    position: relative;
+    top: 140px;
+    width: 100%;
+    background-color: burlywood;
     display: flex;
-    height: 550px;
-    flex-direction: column;
+    height: 125px;
+    flex-direction: row;
     justify-content: center;
 }
 
+.image {
+    height: 120px;
+}
 .right{
     display: flex;
     flex-direction: column;
@@ -42,9 +51,30 @@ body, html {
 .intro {
     display: flex;
     align-items: last baseline;
+    background-color: #ddcfbf;
+    height: 320px;
 }
 
 .introDesc {
-    padding-right: 665px;
-    padding-left: 20px
+    font-size: 25px;
+    padding-right: 480px;
+    padding-left: 75px
+}
+
+.form {
+    padding-left: 70px;
+    padding-right: 30%;
+    padding-top: 48px;
+    padding-bottom: 30px;
+}
+
+.input-area {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.text-area {
+    display: flex;
+    flex-direction: column;
+    width: 50%;
 }
