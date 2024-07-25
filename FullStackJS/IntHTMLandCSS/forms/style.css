@@ -3,78 +3,89 @@ body, html {
 }
 
 .container {
+    background-color: rgb(161, 103, 103) !important;
     display: flex;
     flex-direction: row;
+    height: 100vh;
 }
 
 .left {
+    width: 50%;
+    background-color: rgb(161, 103, 103);
+}
+
+.right {
     display: flex;
-    background-color: rgb(184, 115, 51);
+    flex-direction: column;
+}
+.image-container {
+    margin-top: 25%;
+    width: 100%;
+    display: flex;
+    flex-direction: row;
     justify-content: center;
-    height: 100vh;
-    width: calc(100vw /3);
+}
+
+.bg {
+    max-width: 100%;
+    
+}
+
+.logo {
+    height: 120px;
 }
 
 .odin {
     display: flex;
-    justify-content: center;
-    font-size: 5rem;
     align-items: center;
-}
-
-.image-container {
-    position: relative;
-    top: 140px;
-    width: 100%;
-    background-color: burlywood;
-    display: flex;
-    height: 125px;
-    flex-direction: row;
-    justify-content: center;
-}
-
-.image {
-    height: 120px;
-}
-.right{
-    display: flex;
-    flex-direction: column;
-    background-color: bisque;
-    width: calc(2*(100vw /3));
-}
-
-.first {
-    background-color: grey;
-    width: 100%;
-}
-
-.intro {
-    display: flex;
-    align-items: last baseline;
-    background-color: #ddcfbf;
-    height: 320px;
+    font-size: 90px;
 }
 
 .introDesc {
-    font-size: 25px;
-    padding-right: 480px;
-    padding-left: 75px
+    margin-top: 7%;
+    padding-right: 32%;
+    padding-left: 4%;
+    font-size: 1rem;
+}
+
+.intro {
+    background-color: rgb(161, 103, 103);
 }
 
 .form {
-    padding-left: 70px;
-    padding-right: 30%;
-    padding-top: 48px;
-    padding-bottom: 30px;
+    padding-left: 4%;
+    height: 36%;
+}
+
+.userInput {
+    width: 1000px;
 }
 
 .input-area {
     display: flex;
     flex-wrap: wrap;
+    justify-content: space-between;
 }
 
 .text-area {
     display: flex;
     flex-direction: column;
-    width: 50%;
+    width: 40%;
+    height: 60px;
+}
+
+.submit-bttn-area {
+    padding-left: 4%;
+    margin-bottom: 5px;
+}
+
+.login-area {
+    padding-left: 4%;
+}
+legend {
+    font-size: 2rem;
+}
+
+input {
+    height: 40%;
 }
