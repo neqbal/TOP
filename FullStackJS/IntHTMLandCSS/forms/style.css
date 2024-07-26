@@ -10,8 +10,12 @@ body, html {
 }
 
 .left {
-    width: 50%;
-    background-color: rgb(161, 103, 103);
+    background-image: url(casey-horner-RmoWqDCqN2E-unsplash.jpg);
+    background-size: 100% 100%;
+    background-repeat: no-repeat;
+    background-position: center;
+    width: 60%;
+    background-color: rgb(17, 37, 45);;
 }
 
 .right {
@@ -24,11 +28,6 @@ body, html {
     display: flex;
     flex-direction: row;
     justify-content: center;
-}
-
-.bg {
-    max-width: 100%;
-    
 }
 
 .logo {
