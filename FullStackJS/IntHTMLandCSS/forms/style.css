@@ -1,12 +1,12 @@
 body, html {
     margin: 0px;
+    font-size: 24px;
 }
 
 .container {
-    background-color: rgb(161, 103, 103) !important;
+    background-color: rgb(17, 37, 45);
     display: flex;
     flex-direction: row;
-    height: 100vh;
 }
 
 .left {
@@ -14,13 +14,15 @@ body, html {
     background-size: 100% 100%;
     background-repeat: no-repeat;
     background-position: center;
-    width: 60%;
-    background-color: rgb(17, 37, 45);;
+    width: 60vw;
+    height: 100vh;
+    background-color: rgb(17, 37, 45);
 }
 
 .right {
     display: flex;
     flex-direction: column;
+    background-color: rgb(17, 37, 45);
 }
 .image-container {
     margin-top: 25%;
@@ -37,27 +39,30 @@ body, html {
 .odin {
     display: flex;
     align-items: center;
-    font-size: 90px;
+    font-size: 4rem;
 }
 
+.odin-text {
+    color: white;
+}
+
+h1, h2 {
+    color: #827878;
+}
 .introDesc {
     margin-top: 7%;
     padding-right: 32%;
     padding-left: 4%;
-    font-size: 1rem;
-}
-
-.intro {
-    background-color: rgb(161, 103, 103);
+    font-size: 0.7rem;
 }
 
 .form {
     padding-left: 4%;
-    height: 36%;
-}
-
-.userInput {
-    width: 1000px;
+    padding-right: 30%;
+    background-color: rgb(17, 37, 45);
+    box-shadow: 0 4px 8px 0 rgba(255, 255, 255, 0.2), 0 6px 20px 0 rgba(255, 255, 255, 0.19);
+    margin-bottom: 20px;
+    padding-bottom: 5px;
 }
 
 .input-area {
@@ -81,10 +86,22 @@ body, html {
 .login-area {
     padding-left: 4%;
 }
+
+label {
+    font-size: 1.5vw;
+    color: #827878;
+}
+
 legend {
     font-size: 2rem;
+    color: #827878;
 }
 
 input {
     height: 40%;
+}
+
+.submit-btn {
+    background-color: rgb(116, 161, 179);
+    border-radius: 5px;
 }
