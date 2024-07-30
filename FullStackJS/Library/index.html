@@ -3,7 +3,65 @@
     <head>
         <meta charset="UTF-8">
         <script src="script.js" defer></script>
-        <link rel="stylesheet" hreef="style.css">
+        <link rel="stylesheet" href="style.css">
     </head>
-    <body></body>
+    <body>
+        <dialog class="add-book-info-form">
+            <form method="dialog">
+                <legend>Book Info</legend>
+                <div class="input-area">
+                    <div id="text-area" class="name">
+                        <label for="input-name">Name</label>
+                        <input type="text" class="input-name">
+                    </div>
+                    <div id="text-area"  class="author">
+                        <label for="input-author">Author</label>
+                        <input type="text" class="input-author">
+                    </div>
+                    <div id="text-area" class="pages">
+                        <label for="input_pages">Pages</label>
+                        <input type="text" class="input-pages">
+                    </div>
+                    <div class="read">
+                        <label for="input-read">Read</label>
+                        <input type="checkbox" class="input-read">
+                    </div>
+                </div>
+                <div class="btn">
+                    <button class="submit-btn-btn">Submit</button>
+                    <button class="cancel-btn-btn">Cancel</button>
+                </div>
+            </form>
+        </dialog>
+
+
+
+
+
+        <div class="title-container">
+            <div class="title">
+                Library
+            </div>
+            <div class="add-btn">
+                <button class='add-btn-btn' type="submit">Add Book</button>
+            </div>
+        </div>
+        <div class="card-container">
+            <table>
+                <caption>Books List</caption>
+                <thead>
+                    <tr>
+                        <th scope="col">Name</th>
+                        <th scope="col">Author</th>
+                        <th scope="col">Pages</th>
+                        <th scope="col">Read</th>
+                        <th scope="col">Remove</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    
+                </tbody>
+            </table>
+        </div>
+    </body>
 </html>

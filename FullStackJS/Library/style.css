@@ -1,0 +1,92 @@
+html, body {
+    margin: 0px;
+    padding: 0px;
+    background-color: #202020;
+    color: white;
+}
+
+.title-container {
+    display: flex;
+    padding-left: 10%;
+    padding-right: 10%;
+    padding-top: 40px;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+.title {
+    font-size: 2rem;
+    color: white;
+}
+
+.add-btn {
+    display: flex;
+    justify-content: center;
+}
+
+.read {
+    display: flex;
+    margin-bottom: 5px;;
+}
+
+button {
+    height: 40px;
+    width: 100px;
+    background-color: #8515e1;
+    border-radius: 10px;
+    font-size: 1rem;
+    color: white;
+}
+
+#text-area {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 5px;
+}
+
+.add-book-info-form {
+    background-color: #353434;
+    width: 35%;
+    color: white;
+    border-radius: 10px;
+    border-width: 0px;
+}
+
+legend {
+    font-size: 2rem;
+}
+
+input {
+    width: 100%;
+}
+
+.card-container {
+    display: flex;
+    justify-content: center;
+}
+
+table, th, td {
+    border:1px solid white;
+    border-collapse: collapse;
+}
+
+td {
+    text-align: center;
+}
+
+table {
+    width: 80%;
+}
+
+.temp {
+    width: 30px;
+}
+
+caption {
+    margin-bottom: 5px;
+}
+
+.read-check-btn {
+    width: 20px;
+    height: 20px;
+}
