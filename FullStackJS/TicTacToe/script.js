@@ -1,90 +1,106 @@
-//console.log("hello tictactoe");
+//refernced https://github.com/slothSteady5/project-tic-tac-toe/blob/main/script.js
 
-const gameBoard = (function() {
-    const row=3;
-    const col=3;
-    const board= new Array(row);
-    var count=-1;
-    function createBoard() {
-        for(var i=0; i<row; i++) {
-            board[i] = new Array(col);
-            for(var j=0; j<col; j++) {
-                board[i][j] = ++count;
-            }
+const player = (name, mark, wins) => {
+    return {name, mark, wins};
+}
+
+const GameBoard = (() => {
+    const board = ["", "", "", "", "", "", "", "", ""];
+
+    const getBoard = function() {
+        return board;
+    };
+
+    const updateBoard = function(index, mark) {
+        if(board[index] === "") {
+            board[index] = mark;
+            return true;
         }
-    }
+        return false;
+    };
 
-    function printBoard(board) {
-        for(var i=0; i<row; i++) {
-            for(var j=0; j<col; j++) {
-                console.log(board[i][j], " ");
-            }
-            console.log("\n");
+    const reset = function() {
+        for(var i=0; i<9; i++) {
+            board[i] = "";
         }
-    }
-
-    return {createBoard, board, printBoard};
+    };
+    return {getBoard, updateBoard, reset};
 })();
 
-function player() {
-    let name;
-    let choice;
-    const wins=0;
-    const loose=0;
-    return {name, choice, wins, loose};
-}
+const GameController = (() => {
 
-function startGame() {
-    const players = createPlayer();
-    gameBoard.createBoard();
-    gameBoard.printBoard(gameBoard.board);
-    //console.log("1|2|3\n_____\n4|5|6\n_____\n7|8|9");
-    var numberOfChoices=0;
-    while(players.player1.wins != 3 || players.player2.wins != 3) {
-        const row=0, col=0, loc=0;
-        loc = Number(prompt(players.player1.name, "enter location"));
-        row = loc / 3;
-        col = loc % 3;
-        if(Number.isInteger(gameBoard.board[row][col])) {
-            board[row][col] = players.player1.choice;
-        } else {
-            console.log("wrong choice");
+    const player1 = player("player1", "X", 0);
+    const player2 = player("player2", "O", 0);
+    let currPlayer = player1;
+
+    const players = [player1, player2];
+
+    const changePlayer = () => {
+        currPlayer = currPlayer === player1? player2 : player1;
+    };
+
+    const checkWinner = () => {
+        const winPat = [
+            [0,1,2], [3,4,5], [6,7,8],
+            [0,3,6], [1,4,7], [2,5,8],
+            [0,4,8], [2,4,6]
+        ]
+
+        const board = GameBoard.getBoard();
+        for(var i=0; i<8; i++) {
+            const pat = winPat[i];
+            const [a, b, c] = pat;
+            if(board[a] === board[b] && board[b] === board[c]) {
+                return board[a];
+            }
         }
+        return board.includes("")? null: "tie";
+    };
 
-        ++numberOfChoices;
-        checkForWin(numberOfChoices);
-
-        loc = Number(prompt(players.player2.name, "enter location"));
-        row = loc / 3;
-        col = loc % 3;
-        if(Number.isInteger(gameBoard.board[row][col])) {
-            board[row][col] = players.player2.choice;
-        } else {
-            console.log("wrong choice");
+    const makeMove = (index) => {
+        if(GameBoard.updateBoard(index, currPlayer.mark)) {
+            changePlayer();
+            console.log("aiushdbn");
+            return true;
         }
+        return false;
+    };
 
-        ++numberOfChoices;
-        checkForWin(numberOfChoices);
-    }
-}
+    const reset = () => {
+        GameBoard.reset();
+        currPlayer = player1;
+    };
 
-function checkForWin(count) {
-    if() {
+    return {players, checkWinner, makeMove, reset, changePlayer};
+})();
 
-    }
-}
+const DisplayController = (() => {
+    const box = document.querySelector(".box");
 
-function createPlayer() {
-    const player1=player();
-    const player2=player();
+    const render = function() {
+        
+        const board = GameBoard.getBoard();
+        box.innerHTML="";
+        board.forEach((cell, index) => {
+            const cellDiv = document.createElement("div");
+            cellDiv.textContent=board[index];
+            cellDiv.addEventListener("click", () => {
+                console.log(index);
+                if(GameController.makeMove(index)) {
+                    render();
+                    const winner = GameController.checkWinner()
+                    if(winner) {
+                        alert(winner==="tie"? "its a tie" : winner + ' wins')
+                        GameController.reset();
+                        render();
+                    }
+                }
+            });
+            box.appendChild(cellDiv);
+        });
+    } 
 
-    player1.name = prompt("Player 1 enter name");
-    player1.choice = prompt(player1.name, " enter your choice");
+    return {render};
+})();
 
-    player2.name = prompt("Player 2 enter name");
-    player2.choice = prompt(player2.name, " enter your choice");
-
-    return {player1, player2};
-}
-
-startGame();
+DisplayController.render();
