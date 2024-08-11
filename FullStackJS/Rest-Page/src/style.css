@@ -1,0 +1,70 @@
+body, html {
+    margin: 0px;
+    padding: 0px;
+}
+
+header {
+    height: 60px;
+    background-color: #d09117;
+    box-shadow: 0px 0px 5px 2px rgb(0, 0, 0);
+}
+
+nav {
+    display: flex;
+    justify-content: center;
+    gap: 5px;
+    padding-top: 15px;
+}
+
+button {
+    width: 100px;
+    height: 45px;
+    background-color: #d09117;
+    border-width: 1px;
+    border-radius: 5px;
+    border-color: white;
+}
+
+#container {
+    height: calc(100vh - 60px);
+    background-color: #2f2b2b;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#content {
+    background-color: #d09117;
+    height: calc(100% - 20px);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin-top: 20px;
+    padding-left: 20px;
+    padding-right: 20px;
+}
+
+.headingContainer {
+    width: 710px;
+    height: 60px;
+    margin: 0 auto;
+    margin-bottom: 100px;
+    padding: 10px;
+    background-color: #aaa396;
+}
+
+.heading {
+    width: 710px;
+    height: 60px;
+    background-color:#574d3a;
+    text-align: center;
+}
+
+h1 {
+    margin: 0px;
+}
+
+#content div {
+    clip-path: polygon( 0 33.3%, 6% 0, 94% 0, 100% 33.3%, 100% 66.6%, 94% 100%, 6% 100%, 0 66.6%);
+}

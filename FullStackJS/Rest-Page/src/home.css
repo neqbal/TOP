@@ -1,0 +1,36 @@
+.aboutContainer {
+    width: 400px;
+    height: 200px;
+    background-color: #aaa396;
+    padding: 15px;
+    margin-bottom: 15px;
+}
+
+.about {
+    width: 400px;
+    height: 190px;
+    background-color:#574d3a;
+    text-align: center;
+    padding-top: 10px;
+    font-size: 1.2rem;
+}
+
+p {
+    margin: 0px;
+}
+
+.hoursContainer {
+    width: 400px;
+    height: 300px;
+    background-color: #aaa396;
+    padding: 15px;
+}
+
+.hours {
+    width: 400px;
+    height: 300px;
+    background-color:#574d3a;
+    text-align: center;
+    padding-top: 10px;
+    font-size: 1.2rem;
+}
