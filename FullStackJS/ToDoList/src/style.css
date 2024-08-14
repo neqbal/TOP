@@ -34,9 +34,31 @@ html, body {
     border-bottom: 1px;
     border-color: white;
     border-bottom-style: solid;
+    margin-bottom: 5px;
 }
 
 .tasks-list {
     height: calc(100%);
+}
+
+.ToDo-List-container {
+    height: calc(100% - 65px - 15px);
+}
+
+.name-container {
+    height: 30px;
+    width: 100%;
+    padding: 5px;
+
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 30px;
+}
+
+.more-container {
+    height: 30px;
+    width: 40px;
+    margin-right: 20px;
 }
 
