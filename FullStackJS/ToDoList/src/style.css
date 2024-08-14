@@ -1,0 +1,42 @@
+html, body {
+    margin: 0px;
+}
+
+.container {
+    background-color: black;
+    height: 100vh;
+    display: flex;
+    flex-direction: row;
+    gap: 10px;
+}
+
+.list-items, .display-items{
+    background-color: gray;
+    height: 100%;
+}
+
+.list-items {
+    width: 30%;
+}
+.display-items {
+    width: 70%;
+}
+
+.add-btn-container {
+    background-color: rgb(73, 69, 69);
+    display: flex;
+    justify-content: start;
+    gap: 10px;
+    height: 50px;
+    padding-left: 10px;
+    padding-top: 5px;
+    padding-bottom: 5px;
+    border-bottom: 1px;
+    border-color: white;
+    border-bottom-style: solid;
+}
+
+.tasks-list {
+    height: calc(100%);
+}
+
