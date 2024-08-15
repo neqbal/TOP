@@ -1,5 +1,5 @@
 import './style.css';
-import { createNote } from './notes';
+import { createList } from './notes';
 
 const main = () => {
     setLocalStorage();
@@ -8,7 +8,7 @@ const main = () => {
     const tdl = document.querySelector(".ToDo-List-container");
 
     note.addEventListener('click', () => {
-        createNote(tdl);
+        createList(tdl);
     });
 
     folder.addEventListener('click', () => {

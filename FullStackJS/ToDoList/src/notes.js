@@ -1,34 +1,69 @@
-const createNote = (tdl) => {
-    const NameContainer = document.createElement("div");
-    NameContainer.setAttribute("class", "name-container");
+const newlist = (listName, timeOfCreation, dueDate, content, project) => {
+    return {listName, timeOfCreation, dueDate, content, project};
+}
 
-    const name = document.createElement("input");
-    name.setAttribute("class", "name-area");
-    name.setAttribute("type", "text");
-    name.setAttribute("maxlength", "12");
+const listStorageManager = (() => {
+    var currProject="";
+    var currNote="";
+    const changeProject = () => {
 
-    const more_container = document.createElement("div");
-    more_container.setAttribute("class", "more-container");
+    };
+
+    function changeNote(noteName) {
+        currNote = noteName;
+    }
+
+    const addList = (name) => {
+        const list = newlist(currNote, null, null, null, currProject);
+
+        const project = JSON.parse(localStorage.getItem(currProject));
+
+        project[currNote] = list;
+
+        localStorage.setItem(currProject, JSON.stringify(project));
+    }
+    return {currProject, currNote, changeProject, changeNote, addList};
+})();
+
+const createList = (tdl) => {
+    const ListContainer = document.createElement("div");
+    ListContainer.setAttribute("class", "list-container");
+
+    const inputListName = document.createElement("input");
+    inputListName.setAttribute("class", "input-ListName");
+    inputListName.setAttribute("type", "text");
+    inputListName.setAttribute("maxlength", "12");
+
+    const listOptions = document.createElement("div");
+    listOptions.setAttribute("class", "listOptions-container");
     
-    NameContainer.appendChild(name);
-    NameContainer.appendChild(more_container);
-    tdl.appendChild(NameContainer);
+    ListContainer.appendChild(inputListName);
+    ListContainer.appendChild(listOptions);
+    tdl.appendChild(ListContainer);
 
-    name.addEventListener("keypress", function(e) {
+    inputListName.addEventListener("keypress", function(e) {
         if(e.key === 'Enter') {
-            addList(name);
+            addListToContainer(inputListName);
         }
     });
 };
 
-const addList = (name) => {
-    localStorage.setItem(name.value, "");
-    const NameContainer = name.parentNode;
+const addListToContainer = (listname) => {
+    const ListContainer = listname.parentNode;
     const div = document.createElement("div");
-    div.innerHTML=name.value;
+    div.setAttribute("id", "listName-container");
+    div.innerHTML="#" + listname.value;
+    div.style.color="white";
 
-    NameContainer.insertBefore(div, name);
-    NameContainer.removeChild(name);
+    ListContainer.insertBefore(div, listname);
+    ListContainer.removeChild(listname);
+
+    listStorageManager.changeNote(div.innerHTML);
+    listStorageManager.addList(div.innerHTML);
+
+    ListContainer.addEventListener('click', function(e) {
+        listStorageManager.changeNote(e.target.firstChild.innerHTML);
+    });
 };
 
-export {createNote};
+export {createList};
