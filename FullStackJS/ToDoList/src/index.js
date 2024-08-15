@@ -1,5 +1,5 @@
 import './style.css';
-import { createList } from './notes';
+import { createList, createProject } from './notes';
 
 const main = () => {
     setLocalStorage();
@@ -12,7 +12,7 @@ const main = () => {
     });
 
     folder.addEventListener('click', () => {
-        prompt("add folder");
+        createProject(tdl);
     });
 };
 

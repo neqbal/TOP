@@ -45,7 +45,7 @@ html, body {
     height: calc(100% - 65px - 15px);
 }
 
-.list-container {
+.list-container, .project-container{
     height: 30px;
     width: calc(100% - 10px);
     padding: 5px;
@@ -56,7 +56,7 @@ html, body {
     gap: 30px;
 }
 
-.listOptions-container {
+.listOptions-container, .projectOptions-container{
     height: 30px;
     width: 40px;
     margin-right: 20px;
