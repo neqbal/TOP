@@ -1,6 +1,8 @@
+import { projectDom } from "./dom";
+import { display } from "./index.js";
 const projectManager = (() => {
-    const currProject=document.querySelector('#defaultProject');
-    
+    const currProject="defaultProject";
+
     const changeCurrProject = (name) => {
         currProject=name;
     }
@@ -10,9 +12,9 @@ const projectManager = (() => {
     return {changeCurrProject, getCurrProject, addProject};
 })();
 
-const addProject = (name) => {
-    localStorage.setItem(name, JSON.stringify({}));
-    localStorage.setItem('projectArray', localStorage.getItem('projectArray').push(name));
+function addProject(name) {
+    localStorage.setItem(name, JSON.stringify([]));
+    display();
 }
 
 const deleteProject = (name) => {

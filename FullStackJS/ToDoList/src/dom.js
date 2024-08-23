@@ -1,10 +1,10 @@
-import {projectManager, addProject, deleteProject, addTodo, deleteTodo} from './project.js';
+import {projectManager, addProject, deleteProject} from './project.js';
+import { addTodo } from './todoList.js';
 
 const projectDom=(() => {
     const projectIcon = document.querySelector('#project');
     const todoListContainer = document.querySelector('.ToDo-List-container');
-    createProjectDiv('defaultProject');
-
+    createProjectDiv("defaultProject");
     projectIcon.addEventListener('click', () => {
         projectNamePrompt();
     });
@@ -19,6 +19,7 @@ const projectDom=(() => {
         inputBox.addEventListener('keydown', function(e) {
             if(e.key === 'Enter') {
                 addProject(e.target.value);
+                projectManager.changeCurrProject(e.target.value);
                 todoListContainer.removeChild(e.target);
             }
         });
@@ -44,14 +45,13 @@ const projectDom=(() => {
 
 const todoDom = (() => {
     const todoIcon = document.querySelector('#todo');
-    const todoListContainer = document.querySelector('.ToDo-List-container');
-
+    const currProject = document.querySelector(projectManager.getCurrProject());
+    
     todoIcon.addEventListener('click', () => {
         todoListNamePrompt();
     });
 
     function todoListNamePrompt() {
-        const currProject = projectManager.getCurrProject();
         const inputBox = document.createElement('input');
         inputBox.setAttribute('class', 'inputBox');
         inputBox.setAttribute('maxlength', '12');
@@ -66,7 +66,9 @@ const todoDom = (() => {
         });
     }
 
-
+    function createTodoDiv(name) {
+        
+    }
 })();
 
 
