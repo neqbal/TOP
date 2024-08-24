@@ -1,75 +1,52 @@
-import {projectManager, addProject, deleteProject} from './project.js';
+import {projectManager, addProject} from './project.js';
 import { addTodo } from './todoList.js';
 
-const projectDom=(() => {
-    const projectIcon = document.querySelector('#project');
-    const todoListContainer = document.querySelector('.ToDo-List-container');
-    createProjectDiv("defaultProject");
-    projectIcon.addEventListener('click', () => {
-        projectNamePrompt();
-    });
+const inputPrompt = function(type) {
+    console.log(type);
+    var parent = document.querySelector('.ToDo-List-container');
+    if(type === 'list') {
+        parent = document.querySelector('#'+projectManager.getCurrProject());
+    }
 
-    function projectNamePrompt() {
-        const inputBox = document.createElement('input');
-        inputBox.setAttribute('class', 'inputBox');
-        inputBox.setAttribute('maxlength', '12');
-
-        todoListContainer.appendChild(inputBox);
-
-        inputBox.addEventListener('keydown', function(e) {
-            if(e.key === 'Enter') {
+    const inputBox = document.createElement('input');
+    inputBox.setAttribute('class', 'inputBox');
+    inputBox.setAttribute('type', "text");
+    parent.appendChild(inputBox);
+    inputBox.addEventListener('keydown', function(e) {
+        if(e.key === 'Enter') {
+            if(type === 'project') {
+                parent.removeChild(inputBox);
                 addProject(e.target.value);
-                projectManager.changeCurrProject(e.target.value);
-                todoListContainer.removeChild(e.target);
+            } else {
+                parent.removeChild(inputBox);
+                addTodo(e.target.value);
             }
-        });
-    }
+        }
+    });
+}
 
-    function createProjectDiv(name) {
-        const projectContainer = document.createElement('div');
-        projectContainer.setAttribute('class', 'project');
-        projectContainer.setAttribute('id', name);
-
-        const nameContainer = document.createElement('div');
-        nameContainer.setAttribute('class', 'projectName');
-        if(name != 'defaultProject')
-            nameContainer.innerHTML='*' + name;
-
-        projectContainer.appendChild(nameContainer);
-        todoListContainer.appendChild(projectContainer);
-    }
-
-    return {createProjectDiv};
-})();
-
-
-const todoDom = (() => {
-    const todoIcon = document.querySelector('#todo');
-    const currProject = document.querySelector(projectManager.getCurrProject());
+const createprojectDiv = function(nameOfProject) {
+    const parent = document.querySelector('.ToDo-List-container');
     
-    todoIcon.addEventListener('click', () => {
-        todoListNamePrompt();
+    const projectClass = document.createElement('div');
+    projectClass.setAttribute('class', 'project');
+    projectClass.setAttribute('id', nameOfProject);
+
+    const projectName = document.createElement('div');
+    projectName.setAttribute('class', 'projectName');
+    if(nameOfProject != 'defaultProject')
+        projectName.innerHTML = '*' + nameOfProject;
+
+    projectClass.addEventListener('click', function(e) {
+        projectManager.changeCurrProject(nameOfProject);
+        console.log(projectManager.getCurrProject());
     });
 
-    function todoListNamePrompt() {
-        const inputBox = document.createElement('input');
-        inputBox.setAttribute('class', 'inputBox');
-        inputBox.setAttribute('maxlength', '12');
+    projectClass.appendChild(projectName);
+    parent.appendChild(projectClass);
+}
 
-        currProject.appendChild(inputBox);
+const createTodoDiv = function(nameOfList) {
 
-        inputBox.addEventListener('keydown', function(e) {
-            if(e.key === 'Enter') {
-                addTodo(e.target.value);
-                currProject.removeChild(e.target); 
-            }
-        });
-    }
-
-    function createTodoDiv(name) {
-        
-    }
-})();
-
-
-export {projectDom, todoDom};
+}
+export {inputPrompt, createprojectDiv, createTodoDiv};

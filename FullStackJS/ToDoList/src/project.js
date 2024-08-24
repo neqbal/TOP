@@ -1,15 +1,21 @@
 import { projectDom } from "./dom";
 import { display } from "./index.js";
 const projectManager = (() => {
-    const currProject="defaultProject";
-
-    const changeCurrProject = (name) => {
-        currProject=name;
+    let currProject='defaultProject';
+    let currTodoList = '';
+    const changeCurrProject = (projectName) => {
+        currProject=projectName;
     }
 
     const getCurrProject = () => currProject;
 
-    return {changeCurrProject, getCurrProject, addProject};
+    const changeCurrTodoList = (listName) => {
+        currTodoList = listName;
+    }
+
+    const getCurrTodoList = () => currTodoList;
+
+    return {changeCurrProject, getCurrProject, changeCurrTodoList, getCurrTodoList};
 })();
 
 function addProject(name) {
