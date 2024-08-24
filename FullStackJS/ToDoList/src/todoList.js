@@ -1,8 +1,8 @@
 import {todoDom} from './dom.js';
 import { projectManager } from './project.js';
 import { display } from './index.js';
-const ListManager = () => {
-    const currList = null;
+const ListManager = (() => {
+    let currList = '';
 
     const changeCurrList = (list) => {
         currList = list;
@@ -11,7 +11,7 @@ const ListManager = () => {
     const getCurrList = () => currList;
 
     return {changeCurrList, getCurrList};
-}
+})();
 
 const todoList = function (name, timeOfCreation, dueDate, priority, project) {
     this.name = name;
@@ -30,4 +30,4 @@ const addTodo = (name) => {
     display();
 }
 
-export {addTodo};
+export {addTodo, ListManager};

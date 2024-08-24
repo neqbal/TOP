@@ -1,11 +1,13 @@
 import {projectManager, addProject} from './project.js';
-import { addTodo } from './todoList.js';
+import { addTodo, ListManager } from './todoList.js';
 
 const inputPrompt = function(type) {
     console.log(type);
     var parent = document.querySelector('.ToDo-List-container');
     if(type === 'list') {
         parent = document.querySelector('#'+projectManager.getCurrProject());
+    } else {
+        projectManager.changeCurrProject('defaultProject');
     }
 
     const inputBox = document.createElement('input');
@@ -47,6 +49,20 @@ const createprojectDiv = function(nameOfProject) {
 }
 
 const createTodoDiv = function(nameOfList) {
+    console.log(projectManager.getCurrProject());
+    const parent = document.querySelector('#'+projectManager.getCurrProject());
+
+    const listName = document.createElement('div');
+    listName.setAttribute('class', 'listName');
+    listName.setAttribute('id', nameOfList);
+    listName.innerHTML = '#' + nameOfList;
+
+    listName.addEventListener('click', function(e) {
+        ListManager.changeCurrList(nameOfList);
+        console.log(ListManager.getCurrList());
+    });
+
+    parent.appendChild(listName);
 
 }
 export {inputPrompt, createprojectDiv, createTodoDiv};
