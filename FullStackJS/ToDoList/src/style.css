@@ -1,0 +1,37 @@
+html, body {
+    margin: 0px;
+    padding: 0px;
+}
+
+.container {
+    display: flex;
+    flex-direction: row;
+    height: 100vh;
+    width: 100vw;
+}
+
+.list-items {
+    width: 20%;
+    background-color: gray;
+}
+
+.display-items {
+    width: 80%;
+    background-color: black;
+}
+
+.ToDo-List-container {
+    padding-left: 5px;
+    height: calc(100% - 100px);
+}
+
+.listName {
+    padding-left: 10px;
+}
+
+#defaultProject {
+    margin-top: 10px;
+}
+
+
+
