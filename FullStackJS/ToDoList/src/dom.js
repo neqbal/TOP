@@ -42,6 +42,7 @@ const createprojectDiv = function(nameOfProject) {
     projectClass.addEventListener('click', function(e) {
         projectManager.changeCurrProject(nameOfProject);
         console.log(projectManager.getCurrProject());
+        e.stopPropagation();
     });
 
     projectClass.appendChild(projectName);
@@ -60,9 +61,19 @@ const createTodoDiv = function(nameOfList) {
     listName.addEventListener('click', function(e) {
         ListManager.changeCurrList(nameOfList);
         console.log(ListManager.getCurrList());
+        e.stopPropagation();
     });
 
     parent.appendChild(listName);
 
 }
-export {inputPrompt, createprojectDiv, createTodoDiv};
+
+const createContentInput = function(nameOfList) {
+    
+}
+
+const createContentDiv = function(nameOfList) {
+
+}
+
+export {inputPrompt, createprojectDiv, createTodoDiv, createContentInput, createContentDiv};

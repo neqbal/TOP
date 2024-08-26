@@ -1,8 +1,13 @@
 import './style.css';
-import {createprojectDiv, createTodoDiv, inputPrompt} from './dom.js';
+import {createprojectDiv, createTodoDiv, inputPrompt, createContentInput, createContentDiv} from './dom.js';
 import { addProject, projectManager } from './project.js';
 
 const main=(() => {
+    document.querySelector("body").addEventListener('click', function(e) {
+        projectManager.changeCurrProject("defaultProject");
+        e.stopPropagation();
+    });
+
     setLocalStorage();
     addProject('defaultProject');
     const projectIcon = document.querySelector('#project');
@@ -28,6 +33,11 @@ function display() {
             JSON.parse(localStorage.getItem(i)).forEach(function(currVal, n) {
                 console.log(currVal);
                 createTodoDiv(currVal["name"]);
+                if(currVal["content"] === null) {
+                    createContentInput(currVal["name"]);
+                } else {
+                    createContentDiv(currVal["name"]);
+                }
             });
         }
         j++;

@@ -14,6 +14,7 @@ const projectManager = (() => {
 function addProject(name) {
     localStorage.setItem(name, JSON.stringify([]));
     display();
+    projectManager.changeCurrProject(name);
 }
 
 const deleteProject = (name) => {
