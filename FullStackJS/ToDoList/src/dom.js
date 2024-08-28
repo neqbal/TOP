@@ -2,7 +2,6 @@ import {projectManager, addProject} from './project.js';
 import { addTodo, ListManager } from './todoList.js';
 
 const inputPrompt = function(type) {
-    console.log(type);
     var parent = document.querySelector('.ToDo-List-container');
     if(type === 'list') {
         parent = document.querySelector('#'+projectManager.getCurrProject());
@@ -36,43 +35,48 @@ const createprojectDiv = function(nameOfProject) {
 
     const projectName = document.createElement('div');
     projectName.setAttribute('class', 'projectName');
-    if(nameOfProject != 'defaultProject')
+    if(nameOfProject != 'defaultProject') {
         projectName.innerHTML = '*' + nameOfProject;
 
-    projectClass.addEventListener('click', function(e) {
-        projectManager.changeCurrProject(nameOfProject);
-        console.log(projectManager.getCurrProject());
-        e.stopPropagation();
-    });
+        projectClass.addEventListener('click', function(e) {
+            projectManager.changeCurrProject(nameOfProject);
+            e.stopPropagation();
+        });
+    }
 
     projectClass.appendChild(projectName);
     parent.appendChild(projectClass);
 }
 
-const createTodoDiv = function(nameOfList) {
-    console.log(projectManager.getCurrProject());
+const createTodoDiv = function(listObject) {
     const parent = document.querySelector('#'+projectManager.getCurrProject());
 
     const listName = document.createElement('div');
     listName.setAttribute('class', 'listName');
-    listName.setAttribute('id', nameOfList);
-    listName.innerHTML = '#' + nameOfList;
+    listName.setAttribute('id', listObject["name"]);
+    listName.innerHTML = '#' + listObject["name"];
 
     listName.addEventListener('click', function(e) {
-        ListManager.changeCurrList(nameOfList);
-        console.log(ListManager.getCurrList());
-        e.stopPropagation();
+        ListManager.changeCurrList(listObject["name"]);
+        createContentInput(listObject);
+        console.log("abcd");
     });
 
     parent.appendChild(listName);
 
 }
 
-const createContentInput = function(nameOfList) {
-    
+const createContentInput = function(listObject) {
+    const display_items = document.querySelector(".display-items");
+    display_items.innerHTML="";
+    const textArea = document.createElement("textarea");
+    textArea.setAttribute('class', "textArea")
+    textArea.setAttribute("id", listObject["name"]);
+    textArea.value=listObject["content"];
+    display_items.appendChild(textArea);
 }
 
-const createContentDiv = function(nameOfList) {
+const createContentDiv = function(listObject) {
 
 }
 

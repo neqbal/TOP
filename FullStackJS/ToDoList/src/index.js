@@ -31,18 +31,13 @@ function display() {
             createprojectDiv(i);
             projectManager.changeCurrProject(i);
             JSON.parse(localStorage.getItem(i)).forEach(function(currVal, n) {
-                console.log(currVal);
-                createTodoDiv(currVal["name"]);
-                if(currVal["content"] === null) {
-                    createContentInput(currVal["name"]);
-                } else {
-                    createContentDiv(currVal["name"]);
-                }
+                createTodoDiv(currVal);
+
             });
         }
         j++;
     }
-    projectManager.changeCurrProject('defaultProject');
+    //projectManager.changeCurrProject('defaultProject');
 }
 
 function setLocalStorage() {
