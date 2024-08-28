@@ -24,7 +24,6 @@ const todoList = function (name, timeOfCreation, dueDate, priority, project, con
 
 const addTodo = (name) => {
     const n = projectManager.getCurrProject();
-    //const currProject = document.querySelector('#'+projectManager.getCurrProject());
     const p = JSON.parse((localStorage.getItem(n)));
     const newtodoList = new todoList(name, null, null, null, n, null);
     p.push(newtodoList);
