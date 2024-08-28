@@ -1,5 +1,5 @@
 import './style.css';
-import {createprojectDiv, createTodoDiv, inputPrompt, createContentInput, createContentDiv} from './dom.js';
+import {createprojectDiv, createTodoDiv, inputPrompt} from './dom.js';
 import { addProject, projectManager } from './project.js';
 
 const main=(() => {
