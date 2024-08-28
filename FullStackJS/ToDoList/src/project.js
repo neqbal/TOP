@@ -1,4 +1,3 @@
-import { projectDom } from "./dom";
 import { display } from "./index.js";
 const projectManager = (() => {
     let currProject='defaultProject';

@@ -1,5 +1,5 @@
 import {projectManager, addProject} from './project.js';
-import { addTodo, ListManager } from './todoList.js';
+import { addTodo, ListManager, saveListContent } from './todoList.js';
 
 const inputPrompt = function(type) {
     var parent = document.querySelector('.ToDo-List-container');
@@ -59,6 +59,7 @@ const createTodoDiv = function(listObject) {
     listName.addEventListener('click', function(e) {
         ListManager.changeCurrList(listObject["name"]);
         createContentInput(listObject);
+
         console.log("abcd");
     });
 
@@ -73,6 +74,10 @@ const createContentInput = function(listObject) {
     textArea.setAttribute('class', "textArea")
     textArea.setAttribute("id", listObject["name"]);
     textArea.value=listObject["content"];
+    textArea.addEventListener("keyup", function(e) {
+        console.log("ashbd "+textArea.value);
+        saveListContent(listObject, textArea.value);
+    });
     display_items.appendChild(textArea);
 }
 

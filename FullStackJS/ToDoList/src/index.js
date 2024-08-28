@@ -32,7 +32,6 @@ function display() {
             projectManager.changeCurrProject(i);
             JSON.parse(localStorage.getItem(i)).forEach(function(currVal, n) {
                 createTodoDiv(currVal);
-
             });
         }
         j++;

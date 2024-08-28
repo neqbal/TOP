@@ -24,13 +24,26 @@ const todoList = function (name, timeOfCreation, dueDate, priority, project, con
 
 const addTodo = (name) => {
     const n = projectManager.getCurrProject();
-    const currProject = document.querySelector('#'+projectManager.getCurrProject());
-    const p = JSON.parse((localStorage.getItem(currProject.getAttribute('id'))));
-    const newtodoList = new todoList(name, null, null, null, currProject.getAttribute('id'), null);
+    //const currProject = document.querySelector('#'+projectManager.getCurrProject());
+    const p = JSON.parse((localStorage.getItem(n)));
+    const newtodoList = new todoList(name, null, null, null, n, null);
     p.push(newtodoList);
-    localStorage.setItem(currProject.getAttribute('id'), JSON.stringify(p));
+    localStorage.setItem(n, JSON.stringify(p));
     display();
     projectManager.changeCurrProject(n);
 }
 
-export {addTodo, ListManager};
+const saveListContent = function(listObject, content) {
+    
+    listObject["content"] = content;
+    const p=JSON.parse(localStorage.getItem(listObject["project"]));
+    console.log(listObject);
+    p.forEach(function(a, index) {
+        if(a["name"] === listObject["name"]) {
+            p[index] = listObject;
+        }
+    });
+
+    localStorage.setItem(listObject["project"], JSON.stringify(p));
+}
+export {addTodo, ListManager, saveListContent};
