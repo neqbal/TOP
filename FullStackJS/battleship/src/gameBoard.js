@@ -11,29 +11,25 @@ class gameBoard {
     }
     generateEmptyBoard() {
         for(var i=0; i<10; i++) {
-            this.#board[i] = new Array();
+            this.#board[i] = new Array(10);
             for(var j=0; j<10; j++) {
                 this.#board[i][j] = 0;
             }
         }
     }
 
-    placeShips(orientation, head, length) {
-        const tailCol = head[1] - (length - 1)*(orientation^1);
-        const tailRow = head[0] - (length-1)*orientation;
-
-        //ship goes outside the board
-        if(tailCol < 0 || tailRow < 0) return false; 
+    placeShips(head, tail, length) {
         const saveTheBoard = this.#board;
 
         const ship = new Ship(length);
-        for(var i=tailRow; i<=head[0]; i++) {
-            for(var j=tailCol; j<=head[1]; j++) {
+        console.log(ship);
+        for(var i=tail[0]; i<=head[0]; i++) {
+            for(var j=tail[1]; j<=head[1]; j++) {
                 if(typeof(this.#board[i][j]) === 'object') {
-                    board = saveTheBoard;
+                    this.#board = saveTheBoard;
                     return false;
                 }
-                board[i][j] = ship;
+                this.#board[i][j] = ship;
             }
         }
         return true;
@@ -50,7 +46,7 @@ class gameBoard {
     }
 
     randomPlacement() {
-        this.#board=this.generateEmptyBoard();
+        this.generateEmptyBoard();
         this.generateRandomCoordinates(5);
         this.generateRandomCoordinates(4);
         this.generateRandomCoordinates(3);
@@ -58,18 +54,30 @@ class gameBoard {
         this.generateRandomCoordinates(2);
         this.generateRandomCoordinates(2);
         this.generateRandomCoordinates(2);
+        return true;
+    }
+
+    validCoordinates(tail) {
+        if(tail[0] < 0 || tail[1] <0) return false;
+        return true;
     }
 
     generateRandomCoordinates(length) {
-        const shipPlaced = false;
+        let shipPlaced = false;
         while(!shipPlaced) {
             const orientation = Math.floor(Math.random()*2);
-            const row = Math.floor(Math.random()*10);
-            const col = Math.floor(Math.random()*10);
 
-            shipPlaced = this.placeShips(orientation, [row, col], length);
+            const headRow = Math.floor(Math.random()*10);
+            const headCol = Math.floor(Math.random()*10);
+
+            const tailRow =  headRow - (length-1)*orientation;
+            const tailCol = headCol - (length - 1)*(orientation^1);
+3
+            if(!this.validCoordinates([tailRow, tailCol])) continue;
+
+            shipPlaced = this.placeShips([headRow, headCol], [tailRow, tailCol], length);
         }
     }
 }
 
-module.exports = gameBoard;
+export {gameBoard}

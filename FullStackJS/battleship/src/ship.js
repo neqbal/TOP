@@ -13,7 +13,7 @@ class Ship {
         this.#hit++;
     }
     isSunk() {
-        return this.#hit>this.length;
+        return this.#hit===this.length;
     }
 }
 
