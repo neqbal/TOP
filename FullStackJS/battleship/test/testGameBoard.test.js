@@ -5,7 +5,7 @@
 */
 import { gameBoard } from "../src/gameBoard";
 import { Ship } from "../src/ship";
-
+import { Player } from "../src/player";
 describe("validCoordinates()", function() {
     it("checks coordinates out of bounds", () => {
         const game = new gameBoard();
@@ -49,16 +49,16 @@ describe("placeShip()", function() {
 });
 
 describe("recieveAttack()", function() {
-
-    const board = new gameBoard();
+    const player = new Player(0);
+    //const board = new gameBoard();
     const ship = new Ship(4);
-    board.board[7][5] = ship;
-    board.board[7][4] = ship;
-    board.board[7][3] = ship;
-    board.board[7][2] = ship;
+    player.board.board[7][5] = ship;
+    player.board.board[7][4] = ship;
+    player.board.board[7][3] = ship;
+    player.board.board[7][2] = ship;
 
     it("attacks a ship", () => {
-        expect(board.recieveAttack(7,4)).toBe(true);
+        expect(player.board.recieveAttack(7,5)).toBe(true);
         expect(ship.hits).toBe(1);
     });
 

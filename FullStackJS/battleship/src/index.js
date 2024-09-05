@@ -1,7 +1,8 @@
+import './style.css';
 import {startGame} from './gameController.js';
 
 function main() {
     startGame();
 }
-
-module.exports = main;
+main();
+export {main};
