@@ -5,41 +5,41 @@ const DESTROYED ='💥';
 const MISSED='💨';
 
 class gameBoard {
-    #board = [];
+    board = [];
     constructor() {
         this.generateEmptyBoard();
     }
     generateEmptyBoard() {
         for(var i=0; i<10; i++) {
-            this.#board[i] = new Array(10);
+            this.board[i] = new Array(10);
             for(var j=0; j<10; j++) {
-                this.#board[i][j] = 0;
+                this.board[i][j] = 0;
             }
         }
     }
 
     placeShips(head, tail, length) {
-        const saveTheBoard = this.#board;
+        const saveTheBoard = this.board;
 
         const ship = new Ship(length);
-        console.log(ship);
+
         for(var i=tail[0]; i<=head[0]; i++) {
             for(var j=tail[1]; j<=head[1]; j++) {
-                if(typeof(this.#board[i][j]) === 'object') {
-                    this.#board = saveTheBoard;
+                if(typeof(this.board[i][j]) === 'object') {
+                    this.board = saveTheBoard;
                     return false;
                 }
-                this.#board[i][j] = ship;
+                this.board[i][j] = ship;
             }
         }
         return true;
     }
 
     recieveAttack(row, col) {
-        if(typeof(this.#board[row][col]) != 'object') {
+        if(typeof(this.board[row][col]) != 'object') {
             return false;
         } else {
-            const ship = this.#board[row][col];
+            const ship = this.board[row][col];
             ship.hit();
             return true;
         }

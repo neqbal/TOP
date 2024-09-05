@@ -47,3 +47,22 @@ describe("placeShip()", function() {
         expect(board.randomPlacement()).toBe(true);
     });
 });
+
+describe("recieveAttack()", function() {
+
+    const board = new gameBoard();
+    const ship = new Ship(4);
+    board.board[7][5] = ship;
+    board.board[7][4] = ship;
+    board.board[7][3] = ship;
+    board.board[7][2] = ship;
+
+    it("attacks a ship", () => {
+        expect(board.recieveAttack(7,4)).toBe(true);
+        expect(ship.hits).toBe(1);
+    });
+
+    it("attack is missed", ()=> {
+
+    });
+});
