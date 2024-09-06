@@ -1,11 +1,7 @@
-/*  gameBoardfunctions:
-        placeShip(): places ship given the coordinates
-        validCoordinates(): check for validity of coordinates
-        generateRandomPosition()
-*/
 import { gameBoard } from "../src/gameBoard";
 import { Ship } from "../src/ship";
 import { Player } from "../src/player";
+
 describe("validCoordinates()", function() {
     it("checks coordinates out of bounds", () => {
         const game = new gameBoard();

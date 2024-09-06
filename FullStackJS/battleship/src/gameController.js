@@ -1,5 +1,4 @@
 import {Player} from './player.js';
-import { gameBoard } from './gameBoard.js';
 import { createGrids } from './dom.js';
 
 function startGame() {
@@ -10,24 +9,16 @@ function startGame() {
     human.board.randomPlacement();
     computer.board.randomPlacement();
     createGrids(human, computer);
-}
 
-function attackFromHuman(player, row, col, GridBox, attackListener) {
-    if(player.board.recieveAttack(row, col)) {
-        player.board.board[row][col].hit();
-        
-        player.countShip -=1;
-        console.log(player.countShip);
-        checkForWinner(player);
-        /* if(player.board.board[row][col].isSunk()) {
-            player.countShip -=1;
-            checkForWinner(player);
-        } */
-        GridBox.innerHTML = '💥';
-        player.board.board[row][col] = undefined;
-    } else {
-        GridBox.innerHTML= '💨';
-    }
+    randomizeButton();
+}
+function randomizeButton() {
+    document.querySelector(".randomize").addEventListener("click", function() {
+        startGame();
+    });   
+}
+function attackFromHuman(computer, row, col, GridBox, attackListener) {
+    attack(computer, row, col, GridBox);
     GridBox.removeEventListener('click', attackListener, false);
 }
 
@@ -38,20 +29,21 @@ function attackFromComputer(human) {
     const hGridBox = document.querySelector(".human").childNodes[row].childNodes[col];
     if(hGridBox.innerHTML === '💨' || hGridBox.innerHTML === '💥') return false;
 
-    if(human.board.recieveAttack(row, col)) {
-        human.board.board[row][col].hit();
-        human.countShip -=1;
-        /* if(human.board.board[row][col].isSunk()) {
-            human.countShip -=1;
-            checkForWinner(human);
-        } */
-        checkForWinner(human);
-        hGridBox.innerHTML = '💥';
-        human.board.board[row][col] = undefined;
-    } else {
-        hGridBox.innerHTML='💨';
-    }
+    attack(human, row, col, hGridBox);
+    
     return true;
+}
+
+function attack(player, row, col, GridBox) {
+    if(player.board.recieveAttack(row, col)) {
+        GridBox.innerHTML = '💥';
+        if(player.board.board[row][col].isSunk()) {
+            player.countShip -=1;
+            checkForWinner(player);
+        }
+    } else {
+        GridBox.innerHTML= '💨';
+    }
 }
 
 function checkForWinner(player) {
@@ -61,6 +53,7 @@ function checkForWinner(player) {
         } else {
             alert("human won");
         }
+        startGame();
     }
 }
 

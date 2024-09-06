@@ -1,9 +1,5 @@
 import {Ship} from './ship.js';
 
-const SHIP='🚢';
-const DESTROYED ='💥';
-const MISSED='💨';
-
 class gameBoard {
     board = [];
     constructor() {
